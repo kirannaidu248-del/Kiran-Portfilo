@@ -1,53 +1,48 @@
-# Kiran R — Portfolio
+# Kiran R - Portfolio
 
 > Digital Marketing Specialist & SEO Analyst portfolio. A single-page, zero-dependency static site built for fast load, full accessibility, and easy customization.
 
-🌐 **Live:** *deploy to Vercel — instructions below*
+🌐 **Live:** *deploy to Vercel - instructions below*
 📍 **Bangalore, India** &nbsp;·&nbsp; ✉️ kirannaidu248@gmail.com &nbsp;·&nbsp; 🔗 [LinkedIn](https://www.linkedin.com/in/kiranraghupathi/)
 
 ---
 
 ## ✨ Features
 
-- 🎨 **10 color palettes** — Aurora, Sunset, Ocean, Forest, Crimson, Mono, Gold, Lavender, Cyber, Coral
-- 🌗 **Light + Dark theme** with system-preference detection, persists via `localStorage`
-- 📱 **Fully responsive** — breakpoints at 900 / 600 / 380px, touch-friendly, reduced-motion aware
-- 🧱 **Bento grid layout** — the dominant 2026 portfolio pattern
-- ⚡ **Zero build step** — single HTML file, no bundler, no framework
+- 🌗 **Light + Dark theme** with one-click toggle (top-right corner), system-preference detection, persists via `localStorage`
+- 📱 **Fully responsive** - breakpoints at 900 / 600 / 380px, touch-friendly, reduced-motion aware
+- 🧱 **Bento grid layout** - the dominant 2026 portfolio pattern
+- ⚡ **Zero build step** - single HTML file, no bundler, no framework
 - ⌨️ **Press `T`** anywhere to toggle theme
 - 📊 **Animated stat counters** (count-up on scroll-into-view)
 - 📏 **Reading progress bar**, active nav highlight, back-to-top
 - 🍔 **Mobile hamburger menu** with full-screen serif overlay
 - 📥 **Resume PDF download** + working contact form (mailto)
-- 🚀 **SEO + AEO ready** — meta tags, Open Graph, sitemap, robots.txt with AI crawler allow-list
+- 🚀 **SEO + AEO ready** - meta tags, Open Graph, sitemap, robots.txt with AI crawler allow-list
 
 ---
 
-## 🎨 Color Palettes
+## 🎨 Design System
 
-| # | Name     | Vibe                                |
-| - | -------- | ----------------------------------- |
-| 1 | Aurora   | Violet → Blue → Cyan (AI-era cool)  |
-| 2 | Sunset   | Orange → Pink → Yellow (warm)       |
-| 3 | Ocean    | Cyan → Blue → Teal (calm)           |
-| 4 | Forest   | Emerald → Lime → Olive (organic)    |
-| 5 | Crimson  | Red → Rose → Pink (bold)            |
-| 6 | Mono     | Neutral grays (editorial)           |
-| 7 | Gold     | Amber → Orange → Bronze (luxe)      |
-| 8 | Lavender | Violet → Indigo (premium)           |
-| 9 | Cyber    | Cyan → Lime (futuristic)            |
-| 10 | Coral   | Coral → Peach → Amber (friendly)    |
+A single cohesive color identity:
 
-Open the floating ⚙ button (bottom-right) on the live site to switch between them.
+| Variable          | Value       | Role                            |
+| ----------------- | ----------- | ------------------------------- |
+| `--accent`        | `#a855f7`   | Primary (violet)                |
+| `--accent-2`      | `#3b82f6`   | Secondary (blue)                |
+| `--accent-3`      | `#22d3ee`   | Tertiary (cyan, success states) |
+| `--accent-light`  | `#c084fc`   | Badges & soft accent text       |
+
+Gradient flows violet → blue → cyan across hero, buttons, badges, and the theme toggle.
 
 ---
 
 ## 🛠 Tech Stack
 
-- **HTML5** — semantic, accessible markup
-- **CSS3** — custom properties, `color-mix()` for theme-aware tinting, modern grid
-- **Vanilla JS** — IntersectionObserver, no dependencies
-- **Fonts** — Inter (sans), Instrument Serif (display italic), JetBrains Mono (UI)
+- **HTML5** - semantic, accessible markup
+- **CSS3** - custom properties, `color-mix()` for theme-aware tinting, modern grid
+- **Vanilla JS** - IntersectionObserver, no dependencies
+- **Fonts** - Inter (sans), Instrument Serif (display italic), JetBrains Mono (UI)
 
 ---
 
@@ -55,15 +50,15 @@ Open the floating ⚙ button (bottom-right) on the live site to switch between t
 
 This repo is **Vercel-ready** out of the box.
 
-### Option 1 — One-click (recommended)
+### Option 1 - One-click (recommended)
 
 1. Push your fork to GitHub (already done if you're reading this on GitHub)
 2. Go to [vercel.com/new](https://vercel.com/new)
 3. Import this repository
-4. Click **Deploy** — Vercel auto-detects it as a static site
+4. Click **Deploy** - Vercel auto-detects it as a static site
 5. Done. Your site is live at `https://kiran-portfilo.vercel.app/` (or your custom domain)
 
-### Option 2 — Vercel CLI
+### Option 2 - Vercel CLI
 
 ```bash
 npm i -g vercel
@@ -110,12 +105,12 @@ npx serve
 
 All theming lives at the top of the `<style>` block in `index.html`.
 
-### Change colors
+### Change accent colors
 
-Edit the `[data-palette="..."]` blocks (around line 35–44):
+Edit the `:root` block:
 
 ```css
-[data-palette="aurora"] {
+:root {
   --accent:       #a855f7;  /* primary */
   --accent-2:     #3b82f6;  /* secondary */
   --accent-3:     #22d3ee;  /* tertiary / success */
@@ -123,15 +118,9 @@ Edit the `[data-palette="..."]` blocks (around line 35–44):
 }
 ```
 
-### Add your own palette
-
-1. Add a new `[data-palette="yourname"]` block in CSS
-2. Add a matching `.swatch-yourname` gradient
-3. Add a `<button data-palette-btn="yourname">` to the settings panel
-
 ### Change content
 
-All copy lives directly in the HTML — search for the section headings (Hero, About, Skills, etc.) and edit in place.
+All copy lives directly in the HTML - search for the section headings (Hero, About, Skills, etc.) and edit in place.
 
 ---
 
@@ -153,7 +142,7 @@ All copy lives directly in the HTML — search for the section headings (Hero, A
 
 ## 📬 Contact
 
-**Kiran R** — Digital Marketing Specialist & SEO Analyst
+**Kiran R** - Digital Marketing Specialist & SEO Analyst
 
 - ✉️ kirannaidu248@gmail.com
 - 📞 +91 7022392407

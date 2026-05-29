@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" data-palette="aurora">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kiran R — Digital Marketing Specialist & SEO Analyst</title>
-<meta name="description" content="Kiran R — SEO Analyst & Digital Marketing Specialist based in Bangalore. Helping brands grow organic traffic, improve search rankings, and drive measurable lead generation through SEO, AEO, GEO, and AI-powered marketing." />
+<title>Kiran R - Digital Marketing Specialist & SEO Analyst</title>
+<meta name="description" content="Kiran R - SEO Analyst & Digital Marketing Specialist based in Bangalore. Helping brands grow organic traffic, improve search rankings, and drive measurable lead generation through SEO, AEO, GEO, and AI-powered marketing." />
 <meta name="keywords" content="Kiran R, SEO Analyst, Digital Marketing Specialist, Bangalore SEO, AEO, GEO, AI Search Optimization, Google Ads, Meta Ads, Lead Generation" />
 <meta name="author" content="Kiran R" />
-<meta property="og:title" content="Kiran R — Digital Marketing Specialist" />
+<meta property="og:title" content="Kiran R - Digital Marketing Specialist" />
 <meta property="og:description" content="SEO Analyst & Performance Marketer driving organic growth with AI-powered strategies." />
 <meta property="og:type" content="website" />
 
@@ -64,19 +64,12 @@
     --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.1);
   }
 
-  /* ----- COLOR PALETTES (10) ----- */
-  [data-palette="aurora"]    { --accent: #a855f7; --accent-2: #3b82f6; --accent-3: #22d3ee; --accent-light: #c084fc; }
-  [data-palette="sunset"]    { --accent: #f97316; --accent-2: #ec4899; --accent-3: #eab308; --accent-light: #fb923c; }
-  [data-palette="ocean"]     { --accent: #06b6d4; --accent-2: #3b82f6; --accent-3: #14b8a6; --accent-light: #22d3ee; }
-  [data-palette="forest"]    { --accent: #10b981; --accent-2: #65a30d; --accent-3: #84cc16; --accent-light: #34d399; }
-  [data-palette="crimson"]   { --accent: #ef4444; --accent-2: #f43f5e; --accent-3: #ec4899; --accent-light: #f87171; }
-  [data-palette="mono"]      { --accent: #71717a; --accent-2: #52525b; --accent-3: #a1a1aa; --accent-light: #a1a1aa; }
-  [data-palette="gold"]      { --accent: #eab308; --accent-2: #f59e0b; --accent-3: #d97706; --accent-light: #facc15; }
-  [data-palette="lavender"]  { --accent: #8b5cf6; --accent-2: #6366f1; --accent-3: #a78bfa; --accent-light: #a78bfa; }
-  [data-palette="cyber"]     { --accent: #22d3ee; --accent-2: #84cc16; --accent-3: #10b981; --accent-light: #67e8f9; }
-  [data-palette="coral"]     { --accent: #fb7185; --accent-2: #f97316; --accent-3: #fbbf24; --accent-light: #fda4af; }
-
+  /* ----- ACCENT COLORS ----- */
   :root {
+    --accent: #a855f7;
+    --accent-2: #3b82f6;
+    --accent-3: #22d3ee;
+    --accent-light: #c084fc;
     --gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
     --gradient-text: linear-gradient(135deg, var(--accent-light) 0%, var(--accent-2) 60%, var(--accent-3) 100%);
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -1063,34 +1056,67 @@
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* =============================================
-     SETTINGS PANEL (floating)
+     THEME TOGGLE (top-right corner)
      ============================================= */
-  .settings-fab {
+  .theme-toggle-fab {
     position: fixed;
-    bottom: 24px;
+    top: 24px;
     right: 24px;
-    width: 52px;
-    height: 52px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: var(--gradient);
-    border: none;
-    color: white;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    color: var(--text);
     cursor: pointer;
-    z-index: 95;
+    z-index: 101;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 32px color-mix(in srgb, var(--accent) 40%, transparent);
-    transition: transform var(--transition);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: transform var(--transition), border-color var(--transition), background var(--transition);
   }
 
-  .settings-fab:hover { transform: rotate(45deg) scale(1.05); }
-  .settings-fab svg { width: 22px; height: 22px; }
+  .theme-toggle-fab:hover {
+    transform: scale(1.08);
+    border-color: var(--accent);
+  }
 
+  .theme-toggle-fab svg {
+    width: 20px;
+    height: 20px;
+    transition: opacity 0.25s, transform 0.4s;
+  }
+
+  .theme-toggle-fab .icon-sun { position: absolute; }
+  .theme-toggle-fab .icon-moon { position: absolute; }
+
+  [data-theme="dark"] .theme-toggle-fab .icon-sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  [data-theme="dark"] .theme-toggle-fab .icon-moon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+  }
+  [data-theme="light"] .theme-toggle-fab .icon-sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+  }
+  [data-theme="light"] .theme-toggle-fab .icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  /* =============================================
+     BACK TO TOP
+     ============================================= */
   .back-to-top {
     position: fixed;
     bottom: 24px;
-    right: 88px;
+    right: 24px;
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -1110,146 +1136,6 @@
   .back-to-top.show { opacity: 1; visibility: visible; }
   .back-to-top:hover { transform: translateY(-3px); border-color: var(--accent); color: var(--accent); }
   .back-to-top svg { width: 18px; height: 18px; }
-
-  .settings-panel {
-    position: fixed;
-    bottom: 88px;
-    right: 24px;
-    width: 320px;
-    background: var(--bg-elevated);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    z-index: 96;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: opacity var(--transition), visibility var(--transition), transform var(--transition);
-  }
-
-  .settings-panel.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .settings-panel h4 {
-    font-size: 16px;
-    margin-bottom: 4px;
-    letter-spacing: -0.01em;
-  }
-
-  .settings-panel .panel-desc {
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-bottom: 20px;
-  }
-
-  .settings-section { margin-bottom: 20px; }
-  .settings-section:last-child { margin-bottom: 0; }
-
-  .settings-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 10px;
-  }
-
-  .theme-toggle {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    background: var(--surface);
-    border-radius: 12px;
-    padding: 4px;
-    border: 1px solid var(--border);
-  }
-
-  .theme-btn {
-    padding: 10px;
-    border: none;
-    background: transparent;
-    color: var(--text-muted);
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    transition: all 0.2s;
-  }
-
-  .theme-btn svg { width: 16px; height: 16px; }
-  .theme-btn:hover { color: var(--text); }
-  .theme-btn.active {
-    background: var(--gradient);
-    color: white;
-    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 30%, transparent);
-  }
-
-  .palette-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-  }
-
-  .palette-swatch {
-    aspect-ratio: 1;
-    border-radius: 10px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.2s, border-color 0.2s;
-    background: var(--swatch);
-    overflow: hidden;
-  }
-
-  .palette-swatch:hover { transform: scale(1.08); }
-
-  .palette-swatch.active {
-    border-color: var(--text);
-    transform: scale(1.05);
-  }
-
-  .palette-swatch.active::after {
-    content: '✓';
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 700;
-    font-size: 14px;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-  }
-
-  .palette-name {
-    text-align: center;
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 12px;
-    font-family: var(--font-mono);
-    text-transform: capitalize;
-  }
-
-  /* Palette swatches gradients */
-  .swatch-aurora   { background: linear-gradient(135deg, #a855f7, #3b82f6, #22d3ee); }
-  .swatch-sunset   { background: linear-gradient(135deg, #f97316, #ec4899, #eab308); }
-  .swatch-ocean    { background: linear-gradient(135deg, #06b6d4, #3b82f6, #14b8a6); }
-  .swatch-forest   { background: linear-gradient(135deg, #10b981, #65a30d, #84cc16); }
-  .swatch-crimson  { background: linear-gradient(135deg, #ef4444, #f43f5e, #ec4899); }
-  .swatch-mono     { background: linear-gradient(135deg, #71717a, #52525b, #a1a1aa); }
-  .swatch-gold     { background: linear-gradient(135deg, #eab308, #f59e0b, #d97706); }
-  .swatch-lavender { background: linear-gradient(135deg, #8b5cf6, #6366f1, #a78bfa); }
-  .swatch-cyber    { background: linear-gradient(135deg, #22d3ee, #84cc16, #10b981); }
-  .swatch-coral    { background: linear-gradient(135deg, #fb7185, #f97316, #fbbf24); }
 
   /* =============================================
      LOADING SCREEN
@@ -1327,9 +1213,8 @@
     .project-card { padding: 24px; }
     .contact-main { padding: 32px 24px; }
     .form-row { grid-template-columns: 1fr; gap: 12px; }
-    .settings-panel { right: 16px; left: 16px; width: auto; bottom: 84px; padding: 20px; }
-    .settings-fab { bottom: 16px; right: 16px; width: 48px; height: 48px; }
-    .back-to-top { bottom: 16px; right: 76px; width: 40px; height: 40px; }
+    .theme-toggle-fab { top: 18px; right: 16px; width: 40px; height: 40px; }
+    .back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; }
     .timeline { padding-left: 24px; }
     .timeline-item { padding-bottom: 40px; }
     .timeline-item h3 { font-size: 19px; }
@@ -1374,7 +1259,7 @@
     nav { padding: 6px 6px 6px 16px; }
   }
 
-  /* Touch device improvements — disable hover transforms on touch */
+  /* Touch device improvements - disable hover transforms on touch */
   @media (hover: none) {
     .bento-card:hover,
     .skill-category:hover,
@@ -1452,7 +1337,7 @@
         with data &amp; <span class="serif">AI</span>.
       </h1>
       <p class="hero-subtitle">
-        I'm Kiran R — a Digital Marketing Specialist &amp; SEO Analyst helping brands climb search rankings, sharpen performance campaigns, and stay discoverable in the era of AI search.
+        I'm Kiran R - a Digital Marketing Specialist &amp; SEO Analyst helping brands climb search rankings, sharpen performance campaigns, and stay discoverable in the era of AI search.
       </p>
 
       <div class="hero-meta">
@@ -1493,7 +1378,7 @@
   <div class="container">
     <div class="section-label reveal">About</div>
     <h2 class="section-title reveal">A marketer who <span class="serif">thinks in data</span>.</h2>
-    <p class="section-desc reveal">Numbers tell the story — but strategy writes the next chapter.</p>
+    <p class="section-desc reveal">Numbers tell the story - but strategy writes the next chapter.</p>
 
     <div class="bento reveal">
       <div class="bento-card about-headline">
@@ -1509,12 +1394,12 @@
 
       <div class="bento-card stat-card span-2">
         <div class="stat-num" data-count="5" data-suffix="">0</div>
-        <div class="stat-label">Industry certifications — including Anthropic AI Fluency</div>
+        <div class="stat-label">Industry certifications - including Anthropic AI Fluency</div>
       </div>
 
       <div class="bento-card stat-card span-2">
         <div class="stat-num" data-count="4" data-suffix="">0</div>
-        <div class="stat-label">Languages — English, Kannada, Telugu &amp; Tamil</div>
+        <div class="stat-label">Languages - English, Kannada, Telugu &amp; Tamil</div>
       </div>
 
       <div class="bento-card stat-card span-2">
@@ -1618,16 +1503,16 @@
   <div class="container">
     <div class="section-label reveal">Journey</div>
     <h2 class="section-title reveal">Where I've <span class="serif">built</span>.</h2>
-    <p class="section-desc reveal">From customer support to SEO leadership — a path shaped by curiosity and measurable impact.</p>
+    <p class="section-desc reveal">From customer support to SEO leadership - a path shaped by curiosity and measurable impact.</p>
 
     <div class="timeline reveal">
       <div class="timeline-item">
-        <div class="timeline-date">Dec 2023 — Present</div>
+        <div class="timeline-date">Dec 2023 - Present</div>
         <h3>Digital Marketing Analyst</h3>
         <div class="timeline-company">Invensis Learning · Bangalore</div>
         <ul class="timeline-list">
           <li>Performed keyword research, competitor analysis, and SEO audits to lift organic rankings and visibility.</li>
-          <li>Implemented on-page SEO — meta tags, heading optimization, internal linking, content structuring.</li>
+          <li>Implemented on-page SEO - meta tags, heading optimization, internal linking, content structuring.</li>
           <li>Supported technical SEO improvements for crawlability, indexing, and Core Web Vitals.</li>
           <li>Monitored performance via Google Analytics, Search Console, and SEMrush to surface growth opportunities.</li>
           <li>Worked on AEO &amp; GEO strategies to improve AI search visibility and LLM content discoverability.</li>
@@ -1637,11 +1522,11 @@
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-date">Aug 2023 — Nov 2023</div>
+        <div class="timeline-date">Aug 2023 - Nov 2023</div>
         <h3>Digital Marketing Intern</h3>
         <div class="timeline-company">ByteHarvest Services · Bangalore</div>
         <ul class="timeline-list">
-          <li>Assisted in SEO &amp; performance marketing — keyword research, backlink analysis, campaign support.</li>
+          <li>Assisted in SEO &amp; performance marketing - keyword research, backlink analysis, campaign support.</li>
           <li>Supported Google Ads and Meta Ads campaign monitoring, targeting, and creative optimization.</li>
           <li>Tracked CTR, CPC, and lead performance using analytics tools.</li>
           <li>Gained hands-on exposure to lead generation, conversion tracking, and end-to-end campaign workflows.</li>
@@ -1649,7 +1534,7 @@
       </div>
 
       <div class="timeline-item">
-        <div class="timeline-date">Jun 2022 — Jul 2023</div>
+        <div class="timeline-date">Jun 2022 - Jul 2023</div>
         <h3>eSupport Officer</h3>
         <div class="timeline-company">24-7 Intouch India Pvt Ltd · Bangalore</div>
         <ul class="timeline-list">
@@ -1672,7 +1557,7 @@
       <div class="project-card">
         <span class="project-tag">SEO · Organic Growth</span>
         <h3>Edstellar SEO Project</h3>
-        <p>Drove organic visibility for a global corporate-training brand through deep keyword research, content optimization, and continuous performance analysis — focused on intent alignment and search-driven lead capture.</p>
+        <p>Drove organic visibility for a global corporate-training brand through deep keyword research, content optimization, and continuous performance analysis - focused on intent alignment and search-driven lead capture.</p>
         <div class="project-metrics">
           <div class="project-metric"><span class="project-metric-val">Organic</span><span class="project-metric-label">Growth Lever</span></div>
           <div class="project-metric"><span class="project-metric-val">B2B</span><span class="project-metric-label">Audience</span></div>
@@ -1682,8 +1567,8 @@
 
       <div class="project-card">
         <span class="project-tag">Off-Page SEO · Digital PR</span>
-        <h3>GKCA &amp; Co. — Authority Campaign</h3>
-        <p>Led backlink acquisition and outreach for an established CA firm — building domain authority through strategic placements, niche directories, and PR-driven link earning to improve regional search rankings.</p>
+        <h3>GKCA &amp; Co. - Authority Campaign</h3>
+        <p>Led backlink acquisition and outreach for an established CA firm - building domain authority through strategic placements, niche directories, and PR-driven link earning to improve regional search rankings.</p>
         <div class="project-metrics">
           <div class="project-metric"><span class="project-metric-val">DA↑</span><span class="project-metric-label">Authority</span></div>
           <div class="project-metric"><span class="project-metric-val">Local</span><span class="project-metric-label">Targeting</span></div>
@@ -1694,7 +1579,7 @@
       <div class="project-card">
         <span class="project-tag">AEO &amp; GEO · AI Search</span>
         <h3>AI Search Visibility Initiative</h3>
-        <p>Built an AEO / GEO framework to make content discoverable across ChatGPT, Perplexity, Gemini, and Claude — structuring content for LLM readiness, citation likelihood, and answer engine inclusion.</p>
+        <p>Built an AEO / GEO framework to make content discoverable across ChatGPT, Perplexity, Gemini, and Claude - structuring content for LLM readiness, citation likelihood, and answer engine inclusion.</p>
         <div class="project-metrics">
           <div class="project-metric"><span class="project-metric-val">LLM-ready</span><span class="project-metric-label">Content</span></div>
           <div class="project-metric"><span class="project-metric-val">Generative</span><span class="project-metric-label">Search</span></div>
@@ -1737,7 +1622,7 @@
         <div class="edu-school">Digital Academy 360, Bangalore</div>
       </div>
       <div class="edu-card">
-        <div class="edu-degree">Bachelor of Engineering — Mechanical</div>
+        <div class="edu-degree">Bachelor of Engineering - Mechanical</div>
         <div class="edu-school">Visvesvaraya Technological University</div>
       </div>
     </div>
@@ -1801,114 +1686,35 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<!-- Settings FAB -->
-<button class="settings-fab" id="settingsFab" aria-label="Customize theme">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+<!-- Theme toggle (top-right corner) -->
+<button class="theme-toggle-fab" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme (T)">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
 </button>
 
-<!-- Settings panel -->
-<div class="settings-panel" id="settingsPanel">
-  <h4>Customize</h4>
-  <p class="panel-desc">Pick a theme and color palette. Your choice is saved automatically.</p>
-
-  <div class="settings-section">
-    <div class="settings-label">Theme</div>
-    <div class="theme-toggle">
-      <button class="theme-btn" data-theme-btn="light">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        Light
-      </button>
-      <button class="theme-btn" data-theme-btn="dark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-        Dark
-      </button>
-    </div>
-  </div>
-
-  <div class="settings-section">
-    <div class="settings-label">Color Palette · 10 options</div>
-    <div class="palette-grid">
-      <button class="palette-swatch swatch-aurora"   data-palette-btn="aurora"   title="Aurora"></button>
-      <button class="palette-swatch swatch-sunset"   data-palette-btn="sunset"   title="Sunset"></button>
-      <button class="palette-swatch swatch-ocean"    data-palette-btn="ocean"    title="Ocean"></button>
-      <button class="palette-swatch swatch-forest"   data-palette-btn="forest"   title="Forest"></button>
-      <button class="palette-swatch swatch-crimson"  data-palette-btn="crimson"  title="Crimson"></button>
-      <button class="palette-swatch swatch-mono"     data-palette-btn="mono"     title="Mono"></button>
-      <button class="palette-swatch swatch-gold"     data-palette-btn="gold"     title="Gold"></button>
-      <button class="palette-swatch swatch-lavender" data-palette-btn="lavender" title="Lavender"></button>
-      <button class="palette-swatch swatch-cyber"    data-palette-btn="cyber"    title="Cyber"></button>
-      <button class="palette-swatch swatch-coral"    data-palette-btn="coral"    title="Coral"></button>
-    </div>
-    <div class="palette-name" id="paletteName">Aurora</div>
-  </div>
-</div>
-
 <script>
-  /* ===== THEME & PALETTE PERSISTENCE ===== */
+  /* ===== THEME PERSISTENCE ===== */
   const root = document.documentElement;
   const STORAGE_THEME = 'kiran-portfolio-theme';
-  const STORAGE_PALETTE = 'kiran-portfolio-palette';
 
-  // Load saved or system preference
   const savedTheme = localStorage.getItem(STORAGE_THEME);
-  const savedPalette = localStorage.getItem(STORAGE_PALETTE);
   const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialTheme = savedTheme || (systemDark ? 'dark' : 'dark');
-  const initialPalette = savedPalette || 'aurora';
+  const initialTheme = savedTheme || (systemDark ? 'dark' : 'light');
 
   root.setAttribute('data-theme', initialTheme);
-  root.setAttribute('data-palette', initialPalette);
 
   function setTheme(theme) {
     root.setAttribute('data-theme', theme);
     localStorage.setItem(STORAGE_THEME, theme);
-    updateActiveButtons();
   }
 
-  function setPalette(palette) {
-    root.setAttribute('data-palette', palette);
-    localStorage.setItem(STORAGE_PALETTE, palette);
-    document.getElementById('paletteName').textContent = palette.charAt(0).toUpperCase() + palette.slice(1);
-    updateActiveButtons();
-  }
-
-  function updateActiveButtons() {
-    const theme = root.getAttribute('data-theme');
-    const palette = root.getAttribute('data-palette');
-    document.querySelectorAll('[data-theme-btn]').forEach(b => {
-      b.classList.toggle('active', b.dataset.themeBtn === theme);
-    });
-    document.querySelectorAll('[data-palette-btn]').forEach(b => {
-      b.classList.toggle('active', b.dataset.paletteBtn === palette);
-    });
-  }
-
-  document.querySelectorAll('[data-theme-btn]').forEach(b => {
-    b.addEventListener('click', () => setTheme(b.dataset.themeBtn));
-  });
-  document.querySelectorAll('[data-palette-btn]').forEach(b => {
-    b.addEventListener('click', () => setPalette(b.dataset.paletteBtn));
-  });
-
-  /* ===== SETTINGS PANEL TOGGLE ===== */
-  const fab = document.getElementById('settingsFab');
-  const panel = document.getElementById('settingsPanel');
-  fab.addEventListener('click', (e) => {
-    e.stopPropagation();
-    panel.classList.toggle('open');
-  });
-  document.addEventListener('click', (e) => {
-    if (!panel.contains(e.target) && e.target !== fab) {
-      panel.classList.remove('open');
-    }
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   });
 
   /* ===== LOADER ===== */
   window.addEventListener('load', () => {
     setTimeout(() => document.getElementById('loader').classList.add('hidden'), 400);
-    updateActiveButtons();
-    document.getElementById('paletteName').textContent =
-      initialPalette.charAt(0).toUpperCase() + initialPalette.slice(1);
   });
 
   /* ===== MOBILE MENU ===== */
@@ -1999,7 +1805,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  /* ===== CONTACT FORM (mailto fallback — works without backend) ===== */
+  /* ===== CONTACT FORM (mailto fallback - works without backend) ===== */
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
 
@@ -2024,7 +1830,7 @@
     }
 
     // Open mailto with prefilled content
-    const body = `Hi Kiran,%0D%0A%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A— ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
+    const body = `Hi Kiran,%0D%0A%0D%0A${encodeURIComponent(message)}%0D%0A%0D%0A- ${encodeURIComponent(name)} (${encodeURIComponent(email)})`;
     window.location.href = `mailto:kirannaidu248@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
 
     status.className = 'form-status success';
