@@ -1,0 +1,33 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.pdf",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/favicon.svg",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, immutable" }
+      ]
+    }
+  ],
+  "redirects": [
+    { "source": "/resume", "destination": "/R_KIRAN_Digital-Marketing-Specialist_2026-05-28.pdf", "permanent": false },
+    { "source": "/cv", "destination": "/R_KIRAN_Digital-Marketing-Specialist_2026-05-28.pdf", "permanent": false },
+    { "source": "/linkedin", "destination": "https://www.linkedin.com/in/kiranraghupathi/", "permanent": false }
+  ]
+}
